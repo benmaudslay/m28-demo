@@ -1,30 +1,23 @@
-import './App.css';
+import { useState } from "react"
 
 const App = () => {
-  return (
-    <div>
-      <h1>hi world</h1>
-      <Person></Person>
-      <Person />
-    </div>
-  );
+    const [persons, setPersons] = useState([{name: "leon"},{name: "jordan"}])
+    
+    const bananas = () => {
+        console.log("clicky click click")
+    }
+
+    return (
+        <div>
+            <h1>CN Staff members</h1>
+            <Person name={persons[0].name} click={bananas} />
+            <Person name={persons[1].name} click={bananas} />
+        </div>
+    )
 }
 
-// component tree = app > person > moonbear
-
-const Person = () => {
-  return (
-    <div>
-      <h1>my name is desmond</h1>
-      <Moonbear />
-    </div>
-  )
+const Person = (props) => {
+    return <h4 onClick={props.click}>{props.name}</h4>
 }
 
-const Moonbear = () => {
-  return (
-    <h2>How did I get here?</h2>
-  )
-}
-
-export default App;
+export default App
