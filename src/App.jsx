@@ -2,12 +2,15 @@ import { useState } from "react"
 
 const App = () => {
     const [count, setCount] = useState(0)
+    const [clicker, setClicker] = useState(0)
 
     const handleClickUp = () => {
+        setClicker(clicker + 1)
         setCount(count + 1)
     }
 
     const handleClickDown = () => {
+        setClicker(clicker + 1)
         setCount(count - 1)
     }
 
@@ -18,6 +21,7 @@ const App = () => {
             <Button handleClick={handleClickDown} value="-">-</Button>
             {/* <button onClick={handleClickUp}>+</button>
             <button onClick={handleClickDown}>-</button> */}
+            <h4>You have clicked {clicker} times</h4>
         </div>
     )
 }
