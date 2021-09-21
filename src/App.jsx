@@ -1,23 +1,29 @@
 import { useState } from "react"
 
 const App = () => {
-    const [persons, setPersons] = useState([{name: "leon"},{name: "jordan"}])
-    
-    const handleClick = (name) => {
-        console.log("Hello " + name)
+    const [count, setCount] = useState(0)
+
+    const handleClickUp = () => {
+        setCount(count + 1)
+    }
+
+    const handleClickDown = () => {
+        setCount(count - 1)
     }
 
     return (
         <div>
-            <h1>CN Staff members</h1>
-            <Person name={persons[0].name} click={handleClick} />
-            <Person name={persons[1].name} click={handleClick} />
+            <Button handleClick={handleClickUp} value="+">+</Button>
+            <h1>{count}</h1>
+            <Button handleClick={handleClickDown} value="-">-</Button>
+            {/* <button onClick={handleClickUp}>+</button>
+            <button onClick={handleClickDown}>-</button> */}
         </div>
     )
 }
 
-const Person = (props) => {
-    return <h4 onClick={() => props.click(props.name)}>{props.name}</h4>
+const Button = (props) => {
+    return <button onClick={props.handleClick}>{props.value}</button>
 }
 
 export default App
