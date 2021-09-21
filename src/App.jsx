@@ -13,18 +13,10 @@ const App = () => {
   }
 
   return (
-    <div>
-      {darkMode ? (
-        <div className="darkMode">
-          <h1>Welcome to the bat cave</h1>
-          <p>Have a nice visit</p>
-        </div>
-      ) : (
-        <div>
-          <h1>Welcome to Heaven</h1>
-          <p>Have a fun visit</p>
-        </div>
-      )}
+    <div className={`container ${darkMode && "darkMode"}`}>
+      <h1>Welcome to the bat cave</h1>
+      <p>Have a nice visit</p>
+
       {/* <button onClick={() => setDarkMode(!darkMode)}>Toggle mode</button> */}
       <button onClick={handleToggle}>Toggle mode</button>
     </div>
