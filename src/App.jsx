@@ -1,33 +1,69 @@
-import { useState } from "react"
+import { useState } from "react";
+import "./App.css";
 
 const App = () => {
-    const [count, setCount] = useState(0)
-    const [clicker, setClicker] = useState(0)
+  const [darkMode, setDarkMode] = useState(true);
 
-    const handleClickUp = () => {
-        setClicker(clicker + 1)
-        setCount(count + 1)
-    }
+  const handleToggle = () => {
+      if (darkMode) {
+          setDarkMode(false)
+      } else {
+          setDarkMode(true)
+      }
+  }
 
-    const handleClickDown = () => {
-        setClicker(clicker + 1)
-        setCount(count - 1)
-    }
-
-    return (
-        <div>
-            <Button handleClick={handleClickUp} value="+">+</Button>
-            <h1>{count}</h1>
-            <Button handleClick={handleClickDown} value="-">-</Button>
-            {/* <button onClick={handleClickUp}>+</button>
-            <button onClick={handleClickDown}>-</button> */}
-            <h4>You have clicked {clicker} times</h4>
+  return (
+    <div>
+      {darkMode ? (
+        <div className="darkMode">
+          <h1>Welcome to the bat cave</h1>
+          <p>Have a nice visit</p>
         </div>
-    )
-}
+      ) : (
+        <div>
+          <h1>Welcome to Heaven</h1>
+          <p>Have a fun visit</p>
+        </div>
+      )}
+      {/* <button onClick={() => setDarkMode(!darkMode)}>Toggle mode</button> */}
+      <button onClick={handleToggle}>Toggle mode</button>
+    </div>
+  );
 
-const Button = (props) => {
-    return <button onClick={props.handleClick}>{props.value}</button>
-}
+  //   let page;
 
-export default App
+  //   if (darkMode) {
+  //     page = (
+  //   <div className="darkMode">
+  //     <h1>Welcome to the bat cave</h1>
+  //     <p>Have a nice visit</p>
+  //   </div>
+  //     );
+  //   } else {
+  //     page = (
+  //   <div>
+  //     <h1>Welcome to Heaven</h1>
+  //     <p>Have a fun visit</p>
+  //   </div>
+  //     );
+  //   }
+  //   return <div className="container">{page}</div>;
+
+  // if (darkMode) {
+  //     return (
+  //         <div className="darkMode">
+  //             <h1>Welcome to the bat cave</h1>
+  //             <p>Have a nice visit</p>
+  //         </div>
+  //     )
+  // } else {
+  //   return (
+  //       <div>
+  //           <h1>Welcome to Heaven</h1>
+  //           <p>Have a fun visit</p>
+  //       </div>
+  //   )
+  // }
+};
+
+export default App;
