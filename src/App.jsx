@@ -1,61 +1,27 @@
 import { useState } from "react";
+
 import "./App.css";
+import { Form } from "./Form";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [userForm, setUserForm] = useState([]);
 
-  const handleToggle = () => {
-      if (darkMode) {
-          setDarkMode(false)
-      } else {
-          setDarkMode(true)
-      }
-  }
+  const handleForm = (data) => {
+    setUserForm([...userForm, data]);
+  };
 
   return (
-    <div className={`container ${darkMode && "darkMode"}`}>
-      <h1>Welcome to the bat cave</h1>
-      <p>Have a nice visit</p>
-
-      {/* <button onClick={() => setDarkMode(!darkMode)}>Toggle mode</button> */}
-      <button onClick={handleToggle}>Toggle mode</button>
+    <div className="wrapper">
+      <Form handleForm={handleForm} />
+      {userForm.map((item, index) => (
+        <Person key={index} fname={item.fname} />
+      ))}
     </div>
   );
+};
 
-  //   let page;
-
-  //   if (darkMode) {
-  //     page = (
-  //   <div className="darkMode">
-  //     <h1>Welcome to the bat cave</h1>
-  //     <p>Have a nice visit</p>
-  //   </div>
-  //     );
-  //   } else {
-  //     page = (
-  //   <div>
-  //     <h1>Welcome to Heaven</h1>
-  //     <p>Have a fun visit</p>
-  //   </div>
-  //     );
-  //   }
-  //   return <div className="container">{page}</div>;
-
-  // if (darkMode) {
-  //     return (
-  //         <div className="darkMode">
-  //             <h1>Welcome to the bat cave</h1>
-  //             <p>Have a nice visit</p>
-  //         </div>
-  //     )
-  // } else {
-  //   return (
-  //       <div>
-  //           <h1>Welcome to Heaven</h1>
-  //           <p>Have a fun visit</p>
-  //       </div>
-  //   )
-  // }
+const Person = (props) => {
+  return <h1>Welcome {props.fname}</h1>;
 };
 
 export default App;
